@@ -1,7 +1,4 @@
-**Authors** 
-- Arthur Newton 
-- Christine Staiger 
-- Claudia Behnke (SURF)
+**Authors**
 - Claudio Cacciari (SURF)
 - Maithili Kalamkar Stam (SURF)
 
