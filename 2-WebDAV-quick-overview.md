@@ -1,4 +1,4 @@
-**Authors**
+**Authors** 
 - Arthur Newton 
 - Christine Staiger 
 - Claudia Behnke (SURF)

@@ -1,7 +1,7 @@
 {
-    "irods_host": "playground3.irodspoc-surf.src.surf-hosted.nl",
+    "irods_host": "rsc-test1.irods.surfsara.nl",
     "irods_port": 1247,
     "irods_user_name": "<USERNAME>",
-    "irods_zone_name": "tempZone"
+    "irods_zone_name": "surfZone1"
 }
 
