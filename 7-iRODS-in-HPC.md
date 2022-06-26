@@ -6,9 +6,10 @@
 
 **Authors**
 - Arthur Newton (SURF)
+- Claudio Cacciari (SURF)
 
 **License**
-Copyright (c) 2020, SURFsara. All rights reserved.
+Copyright (c) 2022, SURFsara. All rights reserved.
 This project is licensed under the GPLv3 license.
 The full license text can be found in [LICENSE](LICENSE).
 
@@ -17,7 +18,7 @@ The full license text can be found in [LICENSE](LICENSE).
 
 Learning about the CLI tool icommands of iRODS and how to use it in High Performance Computing environments for data processing and keeping provenance on all your data. 
 Here we focus on how to use these tools in a data processing pipeline at a SLURM based compute cluster with a shared scratch space near the worker nodes and getting data from iRODS to this environment. 
-This is a followup section of [iRODS icommands hands-on](2-iRODS-icommands.md):
+This is a followup section of [iRODS icommands hands-on](5-iRODS-icommands.md):
 
 - searching for datasets of interest via `iquest`
 - downloading the dataset to scratch space accessible by worker nodes on Lisa
@@ -57,7 +58,7 @@ However, the quota on that files system per user is normally restricted and the 
 - If you need fast access to data during the computation you would use the **scratch** file system.
 Each node in the compute cluster has its own **scratch space**.
 It is thus not shared between nodes and you need to make sure that data is stored there before you access it from your compute workflow.
-- Project space for Lisa/Cartesius.
+- Project space for Lisa/Snellius.
 This is a shared space which can be used by more than one researchers.
 Especially useful if you require the same data to be at the compute resources.
 
