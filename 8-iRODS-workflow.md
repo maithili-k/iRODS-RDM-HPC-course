@@ -47,7 +47,7 @@ cd iRODS-RDM-HPC-course
 iput alice.txt
 ```
 
-### 1.2 Execute the word counter program
+### 1.2 Executing the word counter program
 
 The iRODS command to execute a rule is called "irule". A rule is a set of instructions interpreted and executed by the iRODS rule engine.  
 Some of those instructions are called iRODS microservices. We will use a microservice called "msiExecCmd":  
@@ -74,4 +74,19 @@ You should see something like this:
 "/surfZone1/home/irods-user1/alice.txt" is the iRODS path, while "/data/volume_1/irods/Vault/home/irods-user1/alice.txt"
 is the file system path. The microservice "msiExecCmd" execute a script that counts words. The script does not understand
 the concept of iRODS path. It is a bash script that works at linux level, therefore it is necessary to pass the physical path
-of the file as input for the script.
+of the file as input for the script:
+
+```
+irule '{msiExecCmd("wordcounter.sh","/data/volume_1/irods/Vault/home/irods-user1/aliceInWonderland","null", "null", "null", *out)}' "null" "*out"
+```
+
+### 1.3 Executing a rule to count words
+
+To avoid the inconvenience of getting the physical path of the data object, it is possible to implement a rule
+that wraps the microservice and it is stored on the iRODS server:
+
+```
+irule '{countWords(*path, *out)}' *path='/surfZone1/home/claudio/aliceInWonderland' "*out"
+```
+
+Now we can use the iRODS path
