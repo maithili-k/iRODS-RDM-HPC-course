@@ -15,7 +15,7 @@ This project is licensed under the GPLv3 license.
 The full license text can be found in [LICENSE](LICENSE).
 
 
-## Goal
+## 1. Goal
 
 Learning about the CLI tool icommands of iRODS and do basic data handling of data stored in an iRODS instance:
 
@@ -24,12 +24,12 @@ Learning about the CLI tool icommands of iRODS and do basic data handling of dat
 - querying based on metadata
 
 
-## Prerequisites
+## 2. Prerequisites
 
-- an account on Lisa or Cartesius system at SURF
+- an account on Lisa or Snellius system at SURF
 
 
-## Login to Lisa
+## 3. Login to Lisa
 
 In this course we will use the Lisa login node as our user interface. If you don't have access to Lisa or Cartesius system and you want to only use the basic data handling of iRODS without the SLURM data processing, you have to install the icommands on your local machine. 
 
@@ -42,7 +42,7 @@ ssh lcur#@lisa.surfsara.nl
 Since 2020, the icommands are installed on Lisa (and Spider) system wide. 
 
 
-## Clone course repository
+## 4. Clone course repository
 
 Clone this repository to your home folder:
 
@@ -52,7 +52,21 @@ cd iRODS-RDM-HPC-course
 ```
 
 
-## Connecting to iRODS
+## 5. Connecting to iRODS
+
+Please if you have loaded the irods module in a previous tutorial/exercise, unload it:
+
+```sh
+module unload iRODS-iCommands/4.3.0
+```
+
+If you now use the command `ienv`, you should see somethiong like this: 
+
+```sh
+ienv
+irods_version - 4.2.8
+...
+```
 
 To connect to iRODS you need to create the environment file within your homefolder of Lisa. 
 The environment file in the git repository can be used:
@@ -86,7 +100,7 @@ ils
 You should see the listing of the collection defined as the home folder in your environment file, `irods_home`.
 
 
-## General help icommands
+## 6. General help icommands
 
 You can find help for the icommands with:
 
@@ -103,7 +117,7 @@ ienv
 ```
 
 
-## Basic data/collection handling
+## 7. Basic data/collection handling
 
 Note that in iRODS files are called data objects, and folders are called collections. 
 
@@ -113,7 +127,7 @@ However, please do realize iRODS is not a filesystem like you have on your perso
 Data handling is done differently.
 
 
-### Create a collection and navigate
+### 7.1 Create a collection and navigate
 
 Use `ils` to see what collections are available to you and navigate to that collection with `icd`:
 
@@ -151,7 +165,7 @@ to check the permissions (`-A` stands for Access Control Lists) of data objects 
 > * How do you know what permissions you have on a collection?
 
 
-### Uploading a file or folder
+### 7.2 Uploading a file or folder
 
 In order to put a file in iRODS:
 
@@ -186,7 +200,7 @@ You could check with `ils` what has happened.
 What does `ils -l` or `ils -L` show? 
 
 
-#### Exercise
+#### 7.2.1 Exercise
 
 - Upload `alice.txt` to your home directory in iRODS
 - Create a new collection `aliceInWonderland` within your home directory
@@ -196,7 +210,7 @@ What does `ils -l` or `ils -L` show?
 >
 > * Should/can you use iput and icp commands interchangeably, when, why and why not?
 
-### Downloading a data object or collection
+### 7.3 Downloading a data object or collection
 
 To download a data object, you can use the `iget` command:
 
@@ -214,7 +228,7 @@ iget -r source_collection destination_folder
 ```
 
 
-#### Exercise
+#### 7.3.1 Exercise
 
 - download the data object `alice.txt` as `aliceRestore.txt`
 - download the collection `aliceInWonderland`
@@ -223,7 +237,7 @@ iget -r source_collection destination_folder
 >
 > * With the iget command, can you put data to another remote location instead of the Lisa login node?
 
-## Removing files and the trashbin
+## 8. Removing files and the trashbin
 
 You can remove files using `irm`:
 
@@ -235,7 +249,7 @@ It depends on the configured policy of the iRODS instance whether there is a tra
 Note that removing a file is just a rename.
 If you really want to delete a file either use `irmtrash` after removing or `irm -f` upon removing a data object.
 
-#### Optional Exercise
+#### 8.1 Optional Exercise
 
 - how would you be able find the removed file back?
 
@@ -245,7 +259,7 @@ If you really want to delete a file either use `irmtrash` after removing or `irm
 > * Can you find your deleted files here?
 > * Can you see another user's deleted data as well?
 
-## Adding metadata and querying for data
+## 9. Adding metadata and querying for data
 
 In iRODS a data object is not only the bitstream and the filename, but user defined metadata is part of the data object. 
 Metadata is essential to give a data object more context.
@@ -256,7 +270,7 @@ You can manually add metadata, which can also be scripted or let an iRODS rule a
 In iRODS, per metadata item you can store three strings: key, value, unit. You can dismiss the unit string, but the key/value pair needs to be unique.
 
 
-### Metadata handling
+### 9.1 Metadata handling
 
 Manual metadata handling can be done via the `imeta` command. 
 For each command, -d, -C, -R, or -u is used to specify which type of object to work with: data objects, collections, resources, or users, respectively.
@@ -302,16 +316,14 @@ iput source_file --metadata "key1;val1;unit1;key2;val2;unit2"
 iput source_file --metadata "key1;val1;;key2;val2;unit2"
 ```
 
-
-#### Exercise 
+#### 9.1.1 Exercise 
 
 - add metadata to alice.txt
 - add metadata to the `aliceInWonderland` collection
 - create a new file locally (`echo "testing metadata" > lorem.txt`), upload file and add metadata in one go
 
 
-
-#### Querying based on metadata
+### 9.2 Querying based on metadata
 
 Metadata attached to data objects and collections becomes very useful when you want to query for data.
 The `iquest` command is used to query data objects/collections.
@@ -361,11 +373,10 @@ This could be useful in concatenating commands in HPC data staging which we will
 iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1' and META_DATA_ATTR_VALUE = 'val1'" | xargs iget
 ```
 
-#### Exercise
+#### 9.2.1 Exercise
 - try to find the files you have added above by searching for the associated metadata you added
 - search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files?
 
-
-## What next?
+## 10. What next?
 Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC data pipelines](4-iRODS-in-HPC.md).
 

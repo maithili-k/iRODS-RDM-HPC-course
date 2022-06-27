@@ -29,8 +29,6 @@ If you have followed the earlier modules in this training, you should have perfo
 If you have not logged in iRODS yet, please initialize the connection:
 
 ```sh
-module load 2020
-module load iRODS-iCommands/4.3.0
 iinit
 ```
 
@@ -53,7 +51,7 @@ The iRODS command to execute a rule is called "irule". A rule is a set of instru
 Some of those instructions are called iRODS microservices. We will use a microservice called "msiExecCmd":  
 
 ```sh
-rule '{msiExecCmd("wordcounter.sh","alice.txt","null", "null", "null", *out)}' "null" "*out"
+irule '{msiExecCmd("wordcounter.sh","alice.txt","null", "null", "null", *out)}' "null" "*out"
 ```
 Does it work?  
 Why iRODS does not find the object alice.txt?
