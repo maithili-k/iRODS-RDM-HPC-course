@@ -14,7 +14,7 @@ This project is licensed under the GPLv3 license.
 The full license text can be found in [LICENSE](LICENSE).
 
 
-## Goal
+## 1. Goal
 
 Learning about the CLI tool icommands of iRODS and how to use it in High Performance Computing environments for data processing and keeping provenance on all your data. 
 Here we focus on how to use these tools in a data processing pipeline at a SLURM based compute cluster with a shared scratch space near the worker nodes and getting data from iRODS to this environment. 
@@ -28,7 +28,7 @@ This is a followup section of [iRODS icommands hands-on](5-iRODS-icommands.md):
 - submit the workflow to the scheduling system of the HPC cluster.
 
 
-## Login to Lisa and iRODS
+## 2. Login to Lisa and iRODS
 
 If you are not logged in, login to the Lisa compute cluster with your appropriate credentials as explained in your previous section:
 
@@ -49,7 +49,7 @@ We will be uses the program `GNU parallel` to 'parrallelize' processes.
 You need to run it once and accept the terms of conditions.
 
 
-## Data on an HPC cluster
+## 3. Data on an HPC cluster
 
 On most HPC clusters you have access to different file systems which come with different advantages and disadvantages. 
 
@@ -75,7 +75,7 @@ echo $TMPDIR
 ```
 
 
-## Compute workflow - Wordcount
+## 4. Compute workflow - Wordcount
 
 We will now prepare the compute workflow as need be executed on any worker node in the cluster.
 The workflow will be a very simple word count of text files already existing inside the iRODS instance which are annotated with metadata.
@@ -83,7 +83,7 @@ The workflow will be a very simple word count of text files already existing ins
 We still do the workflow in interactive mode and on the user interface node (remember it behaves as any node in the cluster).
 
 
-### Create data folders on **scratch**
+### 4.1 Create data folders on **scratch**
 
 For the compute job, we want to copy the data directly from iRODS to the scratch space, `$TMPDIR` and for this we will create both an input data folder and output data folder for the job to write to.
 
@@ -98,7 +98,7 @@ mkdir $outputdir
 Note that for now we will use `$RANDOM` to create an unique folder name. When we will create the jobscript we will use `$SLURM_JOBID`.
 
 
-### Query files and download them to scratch space
+### 4.2 Query files and download them to scratch space
 
 We will query for the data objects based on the metadata we are interested in.
 For now it is as simple as the name of an author.
@@ -115,7 +115,7 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME = 'author'
 ```
 
 
-### Performing the analysis
+### 4.3 Performing the analysis
 
 We are going to use the files just downloaded, as input files for the analysis and store the files in the output data folder.
 First we are going to 'clean' the data, and use `awk` as 'analysis' tool.
@@ -125,7 +125,7 @@ cat $inputdir/* | tr '[:upper:]' '[:lower:]' | awk '{for(i=1;i<=NF;i++) count[$i
 ```
 
 
-### Uploading the results to iRODS
+### 4.4 Uploading the results to iRODS
 
 Now we will upload the files to iRODS (for now simply the home folder, however, it would be better if there is a structured directory tree.
 
@@ -134,7 +134,7 @@ iput $outputdir/results.dat
 ```
 
 
-### Adding provenance data to the results
+### 4.5 Adding provenance data to the results
 
 Final step to close the loop, is to add provenance data in the metadata of the results data object linking it to the raw data.
 
@@ -151,7 +151,7 @@ imeta ls -d results.dat
 What metadata items would help to keep the provenance of your results? *i.e.* if a researcher in the future (someone else or yourself) sees `results.dat`, what information would that person need to know how this dataset came to be?
 
 
-## Aggregating all steps and creating a jobscript
+## 5. Aggregating all steps and creating a jobscript
 
 All steps that we did above, we can put into one jobscript and submit this job to the Lisa queue.
 The job will be schedules to run according to the priority, queue and allocated resources.
@@ -172,7 +172,7 @@ A simple jobscript looks like:
 #move to your home directory and current git repository which is also mounted on your scratch space and might hold the processing script
 cd $HOME/iRODS-RDM-HPC-course
 
-rodscoll='/yoda/home/research-rdmcourse/YOUR OUTPUT COLLECTION'
+rodscoll='/surfZone1/home/irods-user1/YOUR OUTPUT COLLECTION'
 
 inputdir="$TMPDIR/inputdat$SLURM_JOBID"
 outputdir="$TMPDIR/outputdat$SLURM_JOBID"
@@ -211,7 +211,7 @@ squeue -u $USER
 When your job finishes, the output of the job (also if an error has occurred) will be put into the folder you submitted your job to. 
 
 
-## What's Next?
+## 6. What's Next?
 
 You have performed a very simple data processing pipelines.
 You can create a much more complicated pipeline with mostly the same tools.

@@ -35,6 +35,11 @@ Perform the following steps:
 - Log in the Lisa compute cluster
 - Clone the github repository on the Lisa compute cluster (https://github.com/ccacciari/iRODS-RDM-HPC-course.git)
 
+```sh
+git clone https://github.com/ccacciari/iRODS-RDM-HPC-course.git
+cd iRODS-RDM-HPC-course
+```
+
 We will use a client called rclone (https://rclone.org). It is already available on Lisa.  
 This client supports many different protocols and interfaces, included WebDAV.
 

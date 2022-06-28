@@ -10,7 +10,7 @@
 #move to your home directory and current git repository which is also mounted on your scratch space and might hold the processing script
 cd $HOME/iRODS-RDM-HPC-course
 
-rodscoll='/yoda/home/research-rdmcourse/YOUR OUTPUT COLLECTION'
+rodscoll='/surfZone1/home/irods-user1/YOUR OUTPUT COLLECTION'
 
 inputdir="$TMPDIR/inputdat$SLURM_JOBID"
 outputdir="$TMPDIR/outputdat$SLURM_JOBID"

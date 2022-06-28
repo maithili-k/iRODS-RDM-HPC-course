@@ -33,7 +33,6 @@ If you have followed the earlier modules in this training, you should have perfo
 
 On the login node of the Lisa compute cluster, you have access to *ipython* interpreter, the python package *irods* and you will install [python-irodsclient](https://github.com/irods/python-irodsclient). The login node behaves like any compute node in a cluster, i.e. when your code works here, it will also work on the compute nodes. Later on you will create a script that calls the workflow and runs it on several remote worker nodes without any direct interaction of us.
 
-
 Install the *irods-pythonclient*:
 
 ```
@@ -83,11 +82,20 @@ iHome = coll.path
 ### 2.2 Creating metadata
 Working with metadata is not completely intuitive, you need a good understanding of python dictionaries and the iRODS python API classes *dataobject*, *collection*, *iRODSMetaData* and *iRODSMetaCollection*.
 
+Have you already uploaded the file `alice.txt` in a previous module of this training course?  
+If not, please upload it:
+
+```py
+cd iRODS-RDM-HPC-course
+iPath = iHome + '/alice.txt'
+session.data_objects.put('alice.txt', iPath)
+```
+
 We start slowly with first creating some metadata for our data. 
 Currently, our data object does not carry any user-defined metadata:
 
 ```py
-iPath = iHome + '/alice-copy.txt'
+iPath = iHome + '/alice.txt'
 obj = session.data_objects.get(iPath)
 print(obj.metadata.items())
 ```

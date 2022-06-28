@@ -44,13 +44,14 @@ Since 2020, the icommands are installed on Lisa (and Spider) system wide.
 
 ## 4. Clone course repository
 
-Clone this repository to your home folder:
+If you have not done it yet, clone this repository to your home folder:
 
 ```sh
 git clone https://github.com/ccacciari/iRODS-RDM-HPC-course.git
 cd iRODS-RDM-HPC-course
 ```
 
+Otherwise skipt this step.
 
 ## 5. Connecting to iRODS
 
@@ -115,7 +116,6 @@ Additionally, the following command gives you more information about the iRODS e
 ```sh
 ienv
 ```
-
 
 ## 7. Basic data/collection handling
 
@@ -348,7 +348,7 @@ In above command we wanted to look for everything which has the metadata attribu
 iRODS will respond something like:
 
 ```sh
-COLL_NAME = /yoda/home/research-rdmcourse
+COLL_NAME = /surfZone1/home/irods-user1
 DATA_NAME = testfile
 META_DATA_ATTR_VALUE = val1
 ------------------------------------------------------------
@@ -357,7 +357,7 @@ META_DATA_ATTR_VALUE = val1
 You can change the format of the iRODS response by using a C like format string after `iquest` like so:
 
 ```sh
-iquest "User %-6.6s has %-5.5s access to file %s" "SELECT USER_NAME,  DATA_ACCESS_NAME, DATA_NAME WHERE COLL_NAME = '/yoda/home/research-rdmcourse'"
+iquest "User %-6.6s has %-5.5s access to file %s" "SELECT USER_NAME,  DATA_ACCESS_NAME, DATA_NAME WHERE COLL_NAME = '/surfZone1/home/irods-user1'"
 ```
 
 where after `iquest` there is the format string and the second string is again the SQL like query.
@@ -378,5 +378,5 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 - search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files?
 
 ## 10. What next?
-Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC data pipelines](4-iRODS-in-HPC.md).
+Now that you know /home/claudioc/Documents/SURF/team/irods_training/iRODS-RDM-HPC-course/7-iRODS-in-HPC.mdthe basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC data pipelines](4-iRODS-in-HPC.md).
 
