@@ -378,5 +378,5 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 - search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files?
 
 ## 10. What next?
-Now that you know /home/claudioc/Documents/SURF/team/irods_training/iRODS-RDM-HPC-course/7-iRODS-in-HPC.mdthe basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC data pipelines](4-iRODS-in-HPC.md).
+Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC](7-iRODS-in-HPC.md).
 

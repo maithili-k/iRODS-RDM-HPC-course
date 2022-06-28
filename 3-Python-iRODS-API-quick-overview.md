@@ -120,7 +120,7 @@ print("Metadata: ", obj.metadata.items())
 ```
 
 Less code to write to display the full object:
-```
+```hashlib.md5(open(
 vars(obj)
 ```
 
@@ -145,5 +145,5 @@ obj = session.data_objects.get(obj.path,localpath)
 ```
 Do you know why do you get an error now?
 
-**Exercise** Calculate the MD5 checksum for the downloaded data and compare with the data object's checksum in iRODS. (hint: `import hashlib; hashlib.md5(open(<filename>, 'rb').read()).hexdigest()`
+**Exercise** Calculate the MD5 checksum for the downloaded data and compare with the data object's checksum in iRODS. (hint: `import hashlib; hashlib.md5(open('<filename>', 'rb').read()).hexdigest()`
 

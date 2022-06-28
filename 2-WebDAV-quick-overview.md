@@ -57,9 +57,7 @@ rclone ls :webdav: --webdav-url=https://rsc-test1.irods.surfsara.nl --webdav-ven
 
 ## 3. Upload and download data object and collections
 
-### 3.1 
-
- Now if you want to upload a file:
+Now if you want to upload a file:
 
 ```
 rclone move alice.txt :webdav: --webdav-url=https://rsc-test1.irods.surfsara.nl --webdav-vendor=other --webdav-user=irods-user1 --webdav-pass=myobscurepassword
@@ -67,7 +65,7 @@ rclone ls :webdav: --webdav-url=https://rsc-test1.irods.surfsara.nl --webdav-ven
 ```
 
 If you try to reach the webdav interface with your web browser now, you should see the same file.  
-You can downaload it with your browser on your pc.  
+You can download it with your browser on your pc.  
 Or download it to Lisa via rclone:
 
 ```
