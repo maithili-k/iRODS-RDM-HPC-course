@@ -23,6 +23,8 @@ Learning about the CLI tool icommands of iRODS and do basic data handling of dat
 - adding metadata to data objects/collections
 - querying based on metadata
 
+### What we expect you to do
+You can comfortably go through this exercise on your own and more importantly, at your own pace. We will take stops in intervals to see if we are all more or less on the same page. In the end we can discuss together the 'Foof for Brain' questions. You can of course always ask questions or help if you cannot proceed.
 
 ## 2. Prerequisites
 
