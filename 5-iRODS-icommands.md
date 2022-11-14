@@ -279,7 +279,7 @@ You would be able to retrieve it if the file was accidentally deleted.
 
 > **_Food for brain:_**
 >
-> * How many versions of the deleted dataobject can you retrieve?
+> * How many versions of the deleted file can you retrieve?
 
 ## 9. Adding metadata and querying for data
 
