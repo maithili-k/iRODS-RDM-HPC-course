@@ -345,7 +345,7 @@ iput source_file --metadata "key1;val1;;key2;val2;unit2"
 > 
 #### 9.1.1 Exercise 
 
-Now that you have investigated the content of the data object alice.txt, let's assume you want to use this story for a play. You may want to make its content easily accessible for your peers. Think separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
+Now that you have investigated the content of the data object alice.txt, let's assume you want to use this file for collaboration as data. You may want to make its content easily accessible for your peers instead of everyone having to digging through it like you just did. Think separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
 
 - add metadata to alice.txt (think e.g., author, publication year, licence, etc.)
 - add metadata to the `aliceInWonderland` collection (maybe you separate the content in different files and now it is a collection)
