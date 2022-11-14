@@ -291,7 +291,6 @@ You can manually add metadata, which can also be scripted or let an iRODS rule a
 
 In iRODS, per metadata item you can store three strings: key, value, unit. You can dismiss the unit string, but the key/value pair needs to be unique.
 
-
 ### 9.1 Metadata handling
 
 Manual metadata handling can be done via the `imeta` command. 
@@ -338,10 +337,18 @@ iput source_file --metadata "key1;val1;unit1;key2;val2;unit2"
 iput source_file --metadata "key1;val1;;key2;val2;unit2"
 ```
 
+> **_Food for brain:_**
+>
+> * You have been moving around the data object called alice.txt in the exercises so far. What is in this file? Hint: you can use command line ditor on Lisa or go to the source - https://www.gutenberg.org/cache/epub/28885/pg28885.txt
+> * If you were to write a one-liner description for alice.txt what would it be? 
+> * Now think about how you would split this description in useful metadata
+> 
 #### 9.1.1 Exercise 
 
-- add metadata to alice.txt
-- add metadata to the `aliceInWonderland` collection
+Now that you have investigated the content of the data object alice.txt, let's assume you want to use this story for a play. You may want to make its content easily accessible for your peers. Think separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
+
+- add metadata to alice.txt (think e.g., author, publication year, licence, etc.)
+- add metadata to the `aliceInWonderland` collection (maybe you separate the content in different files and now it is a collection)
 - create a new file locally (`echo "testing metadata" > lorem.txt`), upload file and add metadata in one go
 
 
