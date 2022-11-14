@@ -244,12 +244,12 @@ iget -r source_collection destination_folder
 You can remove files using `irm`:
 
 ```sh
-irm dataobject
+irm file
 ```
 
 It depends on the configured policy of the iRODS instance whether there is a trashbin. 
 Note that removing a file is just a rename.
-If you really want to delete a file either use `irmtrash` after removing or `irm -f` upon removing a data object.
+If you really want to delete a file either use `irmtrash` after removing or `irm -f` upon removing a file.
 
 #### 8.1 Optional Exercise
 
@@ -260,6 +260,26 @@ If you really want to delete a file either use `irmtrash` after removing or `irm
 > * If you run the command 'ils /surfZone1', what do you see?
 > * Can you find your deleted files here?
 > * Can you see another user's deleted data as well?
+
+Typically, you may not be allowed to access any of the above. Below is an example of what it could look like if you had permissions:
+
+```sh
+irm alice.txt 
+
+ils /surfZone1
+/surfZone1:
+  C- /surfZone1/home
+  C- /surfZone1/trash
+  
+ils /surfZone1/trash/home/demo00/black_demo00
+/surfZone1/trash/home/demo00/black_demo00:
+  alice.txt
+```
+You would be able to retrieve it if the file was accidentally deleted. 
+
+> **_Food for brain:_**
+>
+> * How many versions of the deleted dataobject can you retrieve?
 
 ## 9. Adding metadata and querying for data
 
