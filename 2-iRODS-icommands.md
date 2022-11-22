@@ -45,7 +45,7 @@ You can comfortably go through this exercise on your own and more importantly, a
 
 - an account on Lisa or Snellius system at SURF
 - iRODS account username/password
-- 
+
 ## 3. Login to Lisa
 
 In this course we will use the Lisa login node as our user interface which has the iRODS CLI tool icommands installed. If you don't have access to Lisa or the Snellius system and you want to only use the basic data handling of iRODS without the SLURM data processing, you have to install the icommands on your local machine. 
