@@ -214,15 +214,21 @@ What does `ils -l` or `ils -L` show?
 - Create a new collection `aliceInWonderland` within your home directory
 - Move `alice.txt` into this new collection.
 
+
 > **_Food for brain:_**
+> 
 > You just performed steps 1 and 2 of the premise. You created data locally (hello-world.txt) and used existing data (alice.txt) and uploaded it to iRODS. Think of this as your workspace to store data objects and collections aka your files and folders. Some questions to think about:
 >
-> * Can different collections be at different physical locations/storage backends? 
+> * Can different collections be at different physical locations/storage backends? Also, think of the concept of storage tiering you heard about in the presentation
 > * Within a collection can you have objects stored at different physical locations/storage backends?
 > * How do you know what permissions you have on a collection?
+> * Why would you run a checksum? Where would bulk upload come in handy?
+> * Can you think of how this would fit in practice in your data life cycle?
 >
+> Some thoughts on the commands
 > * Should/can you use iput and icp commands interchangeably, when, why and why not?
 > * If you run a command 'ils /' would you see all the collections?
+> * 
 
 
 ### 7.3 Downloading a data object or collection
