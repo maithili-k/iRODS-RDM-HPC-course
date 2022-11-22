@@ -1,7 +1,7 @@
 
 
 | Time       | Module              | 
-| ------------- |:-------------:|
+| ------------- |:-------------|
 |       | 1. Introduction to RDM and iRODS and iRODS features presentation      |                                      
 |       |  2. iRODS-icommands exercise module|
 |       |  3. iRODS in compute jobs presentation|
