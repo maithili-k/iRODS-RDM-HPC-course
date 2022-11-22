@@ -223,7 +223,7 @@ What does `ils -l` or `ils -L` show?
 > * Within a collection can you have objects stored at different physical locations/storage backends?
 > * How do you know what permissions you have on a collection?
 > * Why would you run a checksum? Where would bulk upload come in handy?
-> * Can you think of how this would fit in practice in your data life cycle?
+> * Can you think of how this would fit in practice in your data life cycle? How many 'somewhere' problems in the premise could you solve and make uniform if you had one layer (iRODS in this case) to interact with which would 'know' where all the data is, who has access to it, etc.
 >
 > Some thoughts on the commands
 > * Should/can you use iput and icp commands interchangeably, when, why and why not?
@@ -299,6 +299,8 @@ You would be able to retrieve it if the data object was accidentally deleted.
 > **_Food for brain:_**
 >
 > * How many versions of the deleted data object can you retrieve?
+> * Do you see a scenario of 'oops I accidentally deleted ALL project data' where this could be useful?
+
 
 ## 9. Adding metadata and querying for data
 
@@ -309,6 +311,8 @@ This makes it very powerful, as metadata and data can not be out of sync.
 You can manually add metadata, which can also be scripted or let an iRODS rule add metadata. 
 
 In iRODS, per metadata item you can store three strings: key, value, unit. You can dismiss the unit string, but the key/value pair needs to be unique.
+
+For the purpose of this exercise, think of the hello-world.txt and alice.txt file. What are they - raw data, intermediate data or result? One can always 'look into it and figure it out' or add a README file where it is all explained (an excel sheet, pdf, txt file), but would you rather not have a uniform way of dealing with it aka metadata? It is common practice to use foldername, filename to indicate details, but how many times have you forgotten what your own naming convention was and what it meant? Maybe it has a different meaning for another colleague? How would a researcher 10 years later understand this?
 
 ### 9.1 Metadata handling
 
@@ -358,10 +362,11 @@ iput source_file --metadata "key1;val1;;key2;val2;unit2"
 
 > **_Food for brain:_**
 >
-> * You have been moving around the data object called alice.txt in the exercises so far. What is in this file? Hint: you can use command line ditor on Lisa or go to the source - https://www.gutenberg.org/cache/epub/28885/pg28885.txt
+> * You have been playing around the data object called alice.txt in the exercises so far. What is in this file? Hint: you can use command line ditor on Lisa or go to the source - https://www.gutenberg.org/cache/epub/28885/pg28885.txt
 > * If you were to write a one-liner description for alice.txt what would it be? 
 > * Now think about how you would split this description in useful metadata
-> 
+
+
 #### 9.1.1 Exercise 
 
 Now that you have investigated the content of the data object alice.txt, let's assume you want to use this file for collaboration as data. You may want to make its content easily accessible for your peers instead of everyone having to digging through it like you just did. Think separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
@@ -423,7 +428,12 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 
 #### 9.2.1 Exercise
 - try to find the files you have added above by searching for the associated metadata you added
-- search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files?
+- search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files? -- add some more lewis carroll stories in public and metadata so they get more search hits
+
+> **_Food for brain:_**
+>
+> * Can you relate to the material you went through above with your daily work? 
+> * Now can you think of the FAIR principles and how they are applicable here?
 
 ## 10. What next?
 Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC](7-iRODS-in-HPC.md).
