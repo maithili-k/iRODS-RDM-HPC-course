@@ -67,9 +67,9 @@ cd iRODS-RDM-HPC-course
 
 ## 5. Connecting to iRODS
 
-SURF offers iRODS hosting to several Universities and institutions. We will be using one of our test iRODS instances for this course for which we have created an iRODS account for each one of you. You will be remotely interacting with the iRODS system from the Lisa login node, however, you can do so from any other machine which has iCommands installed (e.g., Snellius or Spider at SURF, or your own laptop). 
+SURF offers iRODS hosting to several Universities and institutions. We will be using one of our test iRODS instances for this course for which we have created an iRODS account for each one of you. You will be remotely interacting with the iRODS system from the Lisa login node, however, you can do so from any other machine which has icommands installed (e.g., Snellius or Spider at SURF, or your own laptop). 
 
-Please if you have loaded the irods module in a previous tutorial/exercise, unload it:
+If you have loaded the irods module in a previous tutorial/exercise, please unload it:
 
 ```sh
 module unload iRODS-iCommands/4.3.0
@@ -198,7 +198,7 @@ Depending on the policy of the iRODS server, you can also immediately calculate 
 iput -K source_file
 ```
 
-Note that his can also be done afterwards with the `ichksum` command. 
+Note that this can also be done afterwards with the `ichksum` command. 
 
 There are many more options for `iput` which could (or could not) optimize data transfer, *e.g.* `-b` for bulk upload to overcome network overhead and `-N` for number of threads.
 However, the default behaviour is already high performant in most cases if the iRODS server is configured correctly.
@@ -223,9 +223,9 @@ What does `ils -l` or `ils -L` show?
 > * Within a collection can you have objects stored at different physical locations/storage backends?
 > * How do you know what permissions you have on a collection?
 > * Why would you run a checksum? Where would bulk upload come in handy?
-> * Can you think of how this would fit in practice in your data life cycle? How many 'somewhere' problems in the premise could you solve and make uniform if you had one layer (iRODS in this case) to interact with which would 'know' where all the data is, who has access to it, etc.
+> * Can you think of how this would fit in practice in your data life cycle? How many 'somewhere' problems in the premise could you solve and make data handling uniform if you had one layer (iRODS in this case) to interact with which would 'know' where all the data is, who has access to it, etc.
 >
-> Some thoughts on the commands
+> Some thoughts on the icommands
 > * Should/can you use iput and icp commands interchangeably, when, why and why not?
 > * If you run a command 'ils /' would you see all the collections?
 > * 
@@ -257,6 +257,7 @@ iget -r source_collection destination_folder
 > **_Food for brain:_**
 >
 > * With the iget command, can you put data to another remote location instead of the Lisa login node?
+> * Did you need to specify on which stroage backend the data was stored when downloading it with the iget command? Do you see the benefit of interacting with your data through the iRODS layer without having to worry about where your data is stored and having to authenticate yourself against each of those storage systems?
 
 ## 8. Removing files and the trashbin
 
@@ -266,8 +267,7 @@ You can remove data objects using `irm`:
 irm data object
 ```
 
-It depends on the configured policy of the iRODS instance whether there is a trashbin. 
-Note that removing a data object is just a rename.
+It depends on the configured policy of the iRODS instance whether there is a trashbin. Note that removing a data object is just a rename.
 If you really want to delete a data object either use `irmtrash` after removing or `irm -f` upon removing a data object.
 
 #### 8.1 Optional Exercise
@@ -305,19 +305,20 @@ You would be able to retrieve it if the data object was accidentally deleted.
 ## 9. Adding metadata and querying for data
 
 In iRODS a data object is not only the bitstream and the filename, but user defined metadata is part of the data object. 
-Metadata is essential to give a data object more context.
-You can add all kinds of metadata to a data object: administrative metadata (about the management, processing of the data), descriptive metadata (about the content, author, etc) or provenance metadata (about the history of the data object).
-This makes it very powerful, as metadata and data can not be out of sync. 
+Metadata is essential to give a data object more context. You can add all kinds of metadata to a data object: administrative metadata (about the management, processing of the data), descriptive metadata (about the content, author, etc) or provenance metadata (about the history of the data object). This makes it very powerful, as metadata and data can not be out of sync. 
 You can manually add metadata, which can also be scripted or let an iRODS rule add metadata. 
 
 In iRODS, per metadata item you can store three strings: key, value, unit. You can dismiss the unit string, but the key/value pair needs to be unique.
 
-For the purpose of this exercise, think of the hello-world.txt and alice.txt file. What are they - raw data, intermediate data or result? One can always 'look into it and figure it out' or add a README file where it is all explained (an excel sheet, pdf, txt file), but would you rather not have a uniform way of dealing with it aka metadata? It is common practice to use foldername, filename to indicate details, but how many times have you forgotten what your own naming convention was and what it meant? Maybe it has a different meaning for another colleague? How would a researcher 10 years later understand this?
+> **_Food for brain:_**
+> For the purpose of this exercise, think of the hello-world.txt and alice.txt files you used. What are they - raw data, intermediate data or result? One can always 'look into it and figure it out' or add a README file where it is all explained (which could be an excel sheet, pdf, txt file), but would you rather not have a uniform way of dealing with this information aka metadata?
+> * It is common practice to use foldername, filename to indicate such details, but how many times have you forgotten what your own naming convention was and what it meant? 
+> * Maybe your defined convention has a different meaning for another colleague? 
+> * How would a researcher 10 years later understand your convention? What if you forgot to update the README file?
 
 ### 9.1 Metadata handling
 
-Manual metadata handling can be done via the `imeta` command. 
-For each command, -d, -C, -R, or -u is used to specify which type of object to work with: data objects, collections, resources, or users, respectively.
+Manual metadata handling can be done via the `imeta` command. For each command, -d, -C, -R, or -u is used to specify which type of object to work with: data objects, collections, resources, or users, respectively.
 To add metadata to a data object or a collection:
 
 ```sh
@@ -337,8 +338,7 @@ imeta rm -d dataobject Key Val Unit
 imeta rm -C collection Key Val Unit
 ```
 
-where you do have to explicitly specify the whole set of \{key, value, unit\} to remove it.
-You can use wildcards (`%`) with `imeta rmw`.
+where you do have to explicitly specify the whole set of \{key, value, unit\} to remove it. You can use wildcards (`%`) with `imeta rmw`.
 You can also modify, copy, show metadata by the `imeta mod`, `imeta cp`, `imeta ls` commands respectively:
 
 ```sh
@@ -361,26 +361,23 @@ iput source_file --metadata "key1;val1;;key2;val2;unit2"
 ```
 
 > **_Food for brain:_**
->
-> * You have been playing around the data object called alice.txt in the exercises so far. What is in this file? Hint: you can use command line ditor on Lisa or go to the source - https://www.gutenberg.org/cache/epub/28885/pg28885.txt
+> Ok looks like metadata can be powerful, but how do I use it in my daily work with my data and the different stages of data life cycle? Think of the stages mentioned in the premise and which keywords would define these correctly (e.g., date generated, equipment and software used, author, etc) Could that be the metadata for your data? 
+> * You have been playing around the data object called alice.txt in the exercises so far. hello-world.txt was created by you and you know what is in it but what is in the alice.txt file? Hint: you can use command line editor on Lisa or go to the source - https://www.gutenberg.org/cache/epub/28885/pg28885.txt The text in here is what you see in alice.txt
 > * If you were to write a one-liner description for alice.txt what would it be? 
 > * Now think about how you would split this description in useful metadata
 
 
 #### 9.1.1 Exercise 
 
-Now that you have investigated the content of the data object alice.txt, let's assume you want to use this file for collaboration as data. You may want to make its content easily accessible for your peers instead of everyone having to digging through it like you just did. Think separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
+So far, you have dealt with handling raw data at creation and storing stages on your own. The next natural step is to analyze the data and perhaps with your collaboration. In the above food for brain you investigated your data aka explored the contents of the alice.txt file. You may want to make its content easily accessible for your peers instead of everyone having to digging through it like you just did. Think e.g., separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
 
 - add metadata to alice.txt (think e.g., author, publication year, licence, etc.)
 - add metadata to the `aliceInWonderland` collection (maybe you separate the content in different files and now it is a collection)
-- create a new file locally (`echo "testing metadata" > lorem.txt`), upload file and add metadata in one go
-
+- preserve a copy of orignal alice.txt for data provenance, upload it to the above collection and add metadata in one go
 
 ### 9.2 Querying based on metadata
 
-Metadata attached to data objects and collections becomes very useful when you want to query for data.
-The `iquest` command is used to query data objects/collections.
-It uses a SQL like syntax.
+Metadata attached to data objects and collections becomes very useful when you want to query for data. The `iquest` command is used to query data objects/collections. It uses a SQL like syntax.
 Do note that not all SQL options are available by default, **e.g.** a join is not possible.
 
 You can look up the available keys you can query for via:
@@ -413,8 +410,7 @@ You can change the format of the iRODS response by using a C like format string 
 iquest "User %-6.6s has %-5.5s access to file %s" "SELECT USER_NAME,  DATA_ACCESS_NAME, DATA_NAME WHERE COLL_NAME = '/surfZone1/home/irods-user1'"
 ```
 
-where after `iquest` there is the format string and the second string is again the SQL like query.
-This can be convenient for making reports but also for retrieving absolute filepaths:
+where after `iquest` there is the format string and the second string is again the SQL like query. This can be convenient for making reports but also for retrieving absolute filepaths:
 
 ```sh
 iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'TEMPERATURE' and META_DATA_ATTR_VALUE > '300'" 
@@ -431,10 +427,10 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 - search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files? -- add some more lewis carroll stories in public and metadata so they get more search hits
 
 > **_Food for brain:_**
->
-> * Can you relate to the material you went through above with your daily work? 
+> You went through the process of adding metadata. Does the above exercise show you the value of doing so? Think of scenarios where in future you could easily find data with simple keyword search using metadata which would not have been possible without the metadata.
+> * Can you relate to the material you went through above with your daily work? Think data upload/download, data sharing and colaboration.
 > * Now can you think of the FAIR principles and how they are applicable here?
 
 ## 10. What next?
-Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline while still retaining data provenance with the data handling tool discussed in this section [iRODS in HPC](7-iRODS-in-HPC.md).
+Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline [iRODS in HPC](x-iRODS-in-HPC.md).
 
