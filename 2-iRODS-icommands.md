@@ -14,26 +14,41 @@ Copyright (c) 2020, SURFsara. All rights reserved.
 This project is licensed under the GPLv3 license.
 The full license text can be found in [LICENSE](LICENSE).
 
+## Premise
+You heard us talk about data and associated problems in managing it, and iRODS as a potential framework to help you there. We are going to now do this in practice. Think of your data cycle or just your project life cycle:
+
+1. You create/collect/observe data for your research from 'somewhere' (laboratory experiment, fieldwork, reuse and/or expand existing data)
+2. You need to save/upload this data 'somewhere' safely
+3. You compute/analyze this data 'somehere' (laptop, a compute cluster,etc.) either on your own or in a collaboration
+4. You publish the results 'somewhere'
+5. 'Something' should happen to this data and the results e.g., data stays on hard disk till disks go corrupt, uploaded 'somewhere' for reuse by 'someone' hopefully (including yourself)
+
+> **_Food for brain:_**
+>
+> * How many 'somehere' and 'something' do you deal with in a typical research project?
+> * How many research projects do you typically deal with per year, and are the 'somewhere' and 'something' the same everytime?
+> * Do you think you are doing good well in terms of the above data management steps? Do you have enough knowledge (including amongst colleagues) and enough support (e.g., tools) to do this right?
 
 ## 1. Goal
 
-Learning about the CLI tool icommands of iRODS and do basic data handling of data stored in an iRODS instance:
+We are going to go through the above data cycle with the help of the iRODS CLI tool icommands. We will perform the exercises below 
 
-- uploading/downloading data
+- uploading/downloading data 
 - adding metadata to data objects/collections
 - querying based on metadata
+- put this experience in data life cycle and data management perspective
 
 ### What we expect you to do
-You can comfortably go through this exercise on your own and more importantly, at your own pace. We will take stops in intervals to see if we are all more or less on the same page. In the end we can discuss together the 'Foof for Brain' questions. You can of course always ask questions or help if you cannot proceed.
+You can comfortably go through this exercise on your own and more importantly, at your own pace. We will take stops in intervals to see if we are all more or less on the same page and discuss together the 'Food for Brain' questions. You can of course always ask questions or help if you cannot proceed.
 
 ## 2. Prerequisites
 
 - an account on Lisa or Snellius system at SURF
-
-
+- iRODS account username/password
+- 
 ## 3. Login to Lisa
 
-In this course we will use the Lisa login node as our user interface. If you don't have access to Lisa or Cartesius system and you want to only use the basic data handling of iRODS without the SLURM data processing, you have to install the icommands on your local machine. 
+In this course we will use the Lisa login node as our user interface which has the iRODS CLI tool icommands installed. If you don't have access to Lisa or the Snellius system and you want to only use the basic data handling of iRODS without the SLURM data processing, you have to install the icommands on your local machine. 
 
 Login to the Lisa compute cluster with your appropriate credentials:
 
@@ -41,21 +56,18 @@ Login to the Lisa compute cluster with your appropriate credentials:
 ssh lcur#@lisa.surfsara.nl
 ```
 
-Since 2020, the icommands are installed on Lisa (and Spider) system wide. 
-
-
 ## 4. Clone course repository
 
 If you have not done it yet, clone this repository to your home folder:
 
 ```sh
-git clone https://github.com/ccacciari/iRODS-RDM-HPC-course.git
+git clone https://github.com/maithili-k/iRODS-RDM-HPC-course.git
 cd iRODS-RDM-HPC-course
 ```
 
-Otherwise skipt this step.
-
 ## 5. Connecting to iRODS
+
+SURF offers iRODS hosting to several Universities and institutions. We will be using one of our test iRODS instances for this course for which we have created an iRODS account for each one of you. You will be remotely interacting with the iRODS system from the Lisa login node, however, you can do so from any other machine which has iCommands installed (e.g., Snellius or Spider at SURF, or your own laptop). 
 
 Please if you have loaded the irods module in a previous tutorial/exercise, unload it:
 
@@ -121,7 +133,7 @@ ienv
 
 ## 7. Basic data/collection handling
 
-Note that in iRODS files are called data objects, and folders are called collections. 
+Note that in iRODS files are called data objects, and folders are called collections. So your research data will be organized in data objects (files) and collectios (folders).
 
 The icommands have basic file handling functionality that have their (almost) equivalent in Linux terminal programs but with an `i` in front of the name, *e.g.* `ls` and `ils`, `cp` and `icp`, `mv` and `imv`, `pwd` and `ipwd`, `mkdir` and `imkdir`, `cd` and `icd`,  `rm` and `irm`. 
 If you want to know more about the available icommands use for example `ils -h`.
@@ -158,13 +170,6 @@ ils -A
 ```
 
 to check the permissions (`-A` stands for Access Control Lists) of data objects and collections.
-
-> **_Food for brain:_**
->
-> * If you run a command 'ils /' would you see all the collections?
-> * Can different collections be at different physical locations/storage backends?
-> * Within a collection can you have objects stored at different physical locations/storage backends?
-> * How do you know what permissions you have on a collection?
 
 
 ### 7.2 Uploading a file or folder
@@ -204,13 +209,21 @@ What does `ils -l` or `ils -L` show?
 
 #### 7.2.1 Exercise
 
-- Upload `alice.txt` to your home directory in iRODS
+- Create a file 'helloworld.txt' locally and upload it to your iRODS home directory (e.g., echo "hello world" > hello-world.txt) 
+- In the folder iRODS-RDM-HPC-course, there is a file called alice.txt. Upload `alice.txt` to your home directory in iRODS
 - Create a new collection `aliceInWonderland` within your home directory
 - Move `alice.txt` into this new collection.
 
 > **_Food for brain:_**
+> You just performed steps 1 and 2 of the premise. You created data locally (hello-world.txt) and used existing data (alice.txt) and uploaded it to iRODS. Think of this as your workspace to store data objects and collections aka your files and folders. Some questions to think about:
+>
+> * Can different collections be at different physical locations/storage backends? 
+> * Within a collection can you have objects stored at different physical locations/storage backends?
+> * How do you know what permissions you have on a collection?
 >
 > * Should/can you use iput and icp commands interchangeably, when, why and why not?
+> * If you run a command 'ils /' would you see all the collections?
+
 
 ### 7.3 Downloading a data object or collection
 
