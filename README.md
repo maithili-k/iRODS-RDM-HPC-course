@@ -1,10 +1,9 @@
 # Course material for iRODS in HPC environments
 
 
-
 ## Goal
 
-Learning about the CLI tool icommands of iRODS and how to use it in High Performance Computing environments for data processing and keeping all your data FAIR. Learning about basic data management principles
+Learning about the CLI tool icommands of iRODS and how to use it in High Performance Computing environments for data processing and keeping all your data FAIR. Learning about basic data management principles.
 
 
 
