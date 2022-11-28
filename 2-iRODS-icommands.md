@@ -27,7 +27,7 @@ You heard us talk about data and associated problems in managing it, and iRODS a
 >
 > * How many 'somehere' and 'something' do you deal with in a typical research project?
 > * How many research projects do you typically deal with per year, and are the 'somewhere' and 'something' the same everytime?
-> * Do you think you are doing good well in terms of the above data management steps? Do you have enough knowledge (including amongst colleagues) and enough support (e.g., tools) to do this right?
+> * Do you think you are doing good well in terms of the above data management steps? Do you have enough knowledge (including amongst colleagues) and enough support (e.g., tools, data stewards within University/Institute) to do this right?
 
 ## 1. Goal
 
@@ -228,7 +228,6 @@ What does `ils -l` or `ils -L` show?
 > Some thoughts on the icommands
 > * Should/can you use iput and icp commands interchangeably, when, why and why not?
 > * If you run a command 'ils /' would you see all the collections?
-> * 
 
 
 ### 7.3 Downloading a data object or collection
@@ -257,7 +256,7 @@ iget -r source_collection destination_folder
 > **_Food for brain:_**
 >
 > * With the iget command, can you put data to another remote location instead of the Lisa login node?
-> * Did you need to specify on which stroage backend the data was stored when downloading it with the iget command? Do you see the benefit of interacting with your data through the iRODS layer without having to worry about where your data is stored and having to authenticate yourself against each of those storage systems?
+> * Did you need to specify which storage backend the data was stored on when downloading it with the iget command? Do you see the benefit of interacting with your data through the iRODS layer without having to worry about where your data is stored and having to authenticate yourself against each of those storage systems?
 
 ## 8. Removing files and the trashbin
 
@@ -298,8 +297,10 @@ You would be able to retrieve it if the data object was accidentally deleted.
 
 > **_Food for brain:_**
 >
+> * How often do you need to delete/modify raw/intermediate/output data e.g., because it was transferred to some other storage location or no longer needed? What if you something went wrong and you needed to retrieve it? 
 > * How many versions of the deleted data object can you retrieve?
-> * Do you see a scenario of 'oops I accidentally deleted ALL project data' where this could be useful?
+> * Did you accidentally delete/overwrite important data? How did you retrieve it?
+> * Do you see a scenario of 'oops I accidentally deleted ALL project data and my collaborators are going to be very angry' where this could be useful? 
 
 
 ## 9. Adding metadata and querying for data
@@ -364,12 +365,13 @@ iput source_file --metadata "key1;val1;;key2;val2;unit2"
 > Ok looks like metadata can be powerful, but how do I use it in my daily work with my data and the different stages of data life cycle? Think of the stages mentioned in the premise and which keywords would define these correctly (e.g., date generated, equipment and software used, author, etc) Could that be the metadata for your data? 
 > * You have been playing around the data object called alice.txt in the exercises so far. hello-world.txt was created by you and you know what is in it but what is in the alice.txt file? Hint: you can use command line editor on Lisa or go to the source - https://www.gutenberg.org/cache/epub/28885/pg28885.txt The text in here is what you see in alice.txt
 > * If you were to write a one-liner description for alice.txt what would it be? 
-> * Now think about how you would split this description in useful metadata
+> * Now think about how you would split this one-liner description in useful metadata
+> * Do you already see a usecase of metadata for your research data? How is this done in your research domain?
 
 
 #### 9.1.1 Exercise 
 
-So far, you have dealt with handling raw data at creation and storing stages on your own. The next natural step is to analyze the data and perhaps with your collaboration. In the above food for brain you investigated your data aka explored the contents of the alice.txt file. You may want to make its content easily accessible for your peers instead of everyone having to digging through it like you just did. Think e.g., separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
+So far, you have dealt with handling raw data at creation and storing stages on your own. The next natural step is to analyze the data and perhaps with your collaboration. In the above food for brain you investigated your data aka explored the contents of the alice.txt file. You may want to make its content easily accessible for your peers instead of everyone having to dig through it like you just did. Think e.g., separating the chapters in separate data objects, or putting the licence as a separate file, maybe a separate file to capture additional infromation (author, year of publication/revision, etc.) etc. Or you may choose to add the relevant information in some form of metadata and leave the original file as is.
 
 - add metadata to alice.txt (think e.g., author, publication year, licence, etc.)
 - add metadata to the `aliceInWonderland` collection (maybe you separate the content in different files and now it is a collection)
@@ -425,11 +427,13 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 #### 9.2.1 Exercise
 - try to find the files you have added above by searching for the associated metadata you added
 - search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files? -- add some more lewis carroll stories in public and metadata so they get more search hits
+- Think of how metadata is already being used in your research domain to find the data? e.g., any portaly where you used keyword search or some parameter search, etc.
 
 > **_Food for brain:_**
 > You went through the process of adding metadata. Does the above exercise show you the value of doing so? Think of scenarios where in future you could easily find data with simple keyword search using metadata which would not have been possible without the metadata.
-> * Can you relate to the material you went through above with your daily work? Think data upload/download, data sharing and colaboration.
-> * Now can you think of the FAIR principles and how they are applicable here?
+> * Can you relate to the material you went through above with your daily work? Think data upload/download, data sharing and collaboration.
+> * Now can you think of the FAIR principles and how they are applicable here? What role can a system like iRODS or the concept of metadata (or whatever term you may use) can play in making the data FAIR?
+> * Can you name at least one example of how you would use the information you learned above in your data life cycle
 
 ## 10. What next?
 Now that you know the basic data handling in iRODS, you can follow the next section which is about setting up a data processing pipeline [iRODS in HPC](x-iRODS-in-HPC.md).
