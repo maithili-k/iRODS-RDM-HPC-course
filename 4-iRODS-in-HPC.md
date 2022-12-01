@@ -75,7 +75,7 @@ echo $TMPDIR
 
 ## 4. Compute workflow - Wordcount
 
-We will now prepare the compute workflow as need be executed on any worker node in the cluster.
+We will now prepare the compute workflow so that it can be executed on any worker node in the cluster.
 The workflow will be a very simple word count of text files already existing inside the iRODS instance which are annotated with metadata.
 
 We still do the workflow in interactive mode and on the user interface node (remember it behaves as any node in the cluster).
@@ -101,6 +101,7 @@ Note that for now we will use `$RANDOM` to create an unique folder name. When we
 We will query for the data objects based on the metadata we are interested in.
 For now it is as simple as the name of an author.
 This could be a more advanced query if you have decided on a standardized metadata scheme which is interoperable with your analysis program.
+(to find something you must have added the metadata as explained in the chapter 9.1 of module "iRODS icommands")
 
 ```sh
 iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME = 'author' and META_DATA_ATTR_VALUE = 'Lewis Carroll'"
@@ -136,7 +137,7 @@ iput $outputdir/results.dat
 
 Final step to close the loop, is to add provenance data in the metadata of the results data object linking it to the raw data.
 
-Remember that metadata items in iRODS are string triples: key,value, unit.
+Remember that metadata items in iRODS are string triplets: key,value, unit.
 Try to always use standard formats to make your data interoperable with other datasets.
 Of course, there is no such template for this small processing pipeline. 
  
