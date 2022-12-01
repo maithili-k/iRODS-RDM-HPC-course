@@ -10,7 +10,7 @@
 - Maithili Kalamkar Stam (SURF)
 
 **License**
-Copyright (c) 2020, SURFsara. All rights reserved.
+Copyright (c) 2022, SURFsara. All rights reserved.
 This project is licensed under the GPLv3 license.
 The full license text can be found in [LICENSE](LICENSE).
 
@@ -25,9 +25,9 @@ You heard us talk about data and associated problems in managing it, and iRODS a
 
 > **_Food for brain:_**
 >
-> * How many 'somehere' and 'something' do you deal with in a typical research project?
+> * How many 'somewhere' and 'something' do you deal with in a typical research project?
 > * How many research projects do you typically deal with per year, and are the 'somewhere' and 'something' the same everytime?
-> * Do you think you are doing good well in terms of the above data management steps? Do you have enough knowledge (including amongst colleagues) and enough support (e.g., tools, data stewards within University/Institute) to do this right?
+> * Do you think you are doing well in terms of the above data management steps? Do you have enough knowledge (including amongst colleagues) and enough support (e.g., tools, data stewards within University/Institute) to do this right?
 
 ## 1. Goal
 
@@ -133,7 +133,7 @@ ienv
 
 ## 7. Basic data/collection handling
 
-Note that in iRODS files are called data objects, and folders are called collections. So your research data will be organized in data objects (files) and collectios (folders).
+Note that in iRODS files are called data objects, and folders are called collections. So your research data will be organized in data objects (files) and collections (folders).
 
 The icommands have basic file handling functionality that have their (almost) equivalent in Linux terminal programs but with an `i` in front of the name, *e.g.* `ls` and `ils`, `cp` and `icp`, `mv` and `imv`, `pwd` and `ipwd`, `mkdir` and `imkdir`, `cd` and `icd`,  `rm` and `irm`. 
 If you want to know more about the available icommands use for example `ils -h`.
@@ -297,7 +297,7 @@ You would be able to retrieve it if the data object was accidentally deleted.
 
 > **_Food for brain:_**
 >
-> * How often do you need to delete/modify raw/intermediate/output data e.g., because it was transferred to some other storage location or no longer needed? What if you something went wrong and you needed to retrieve it? 
+> * How often do you need to delete/modify raw/intermediate/output data e.g., because it was transferred to some other storage location or no longer needed? What if something went wrong and you needed to retrieve it? 
 > * How many versions of the deleted data object can you retrieve?
 > * Did you accidentally delete/overwrite important data? How did you retrieve it?
 > * Do you see a scenario of 'oops I accidentally deleted ALL project data and my collaborators are going to be very angry' where this could be useful? 
