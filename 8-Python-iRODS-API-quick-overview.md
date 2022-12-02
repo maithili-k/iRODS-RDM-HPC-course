@@ -36,7 +36,7 @@ On the login node of the Lisa compute cluster, you have access to *ipython* inte
 Install the *irods-pythonclient*:
 
 ```
-module load 2020
+module load 2022
 module load iRODS-iCommands/4.3.0
 pip3 install python-irodsclient
 ```
