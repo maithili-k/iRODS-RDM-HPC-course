@@ -436,5 +436,5 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 > * Can you name at least one example of how you would use the information you learned above in your data life cycle
 
 ## 10. What next?
-Now that you know the basic data handling in iRODS, you shall see the following presentation on [iRODS in HPC](https://github.com/maithili-k/iRODS-RDM-HPC-course/blob/master/3-iRODS-in-compute-jobs.pdf) followed by a [hands-on session]([x-iRODS-in-HPC.md](https://github.com/maithili-k/iRODS-RDM-HPC-course/blob/master/4-iRODS-in-HPC.md)).
+Now that you know the basic data handling in iRODS, you shall see the following presentation on [iRODS in HPC](https://github.com/maithili-k/iRODS-RDM-HPC-course/blob/master/3-iRODS-in-compute-jobs.pdf) followed by a [hands-on session](https://github.com/maithili-k/iRODS-RDM-HPC-course/blob/master/4-iRODS-in-HPC.md).
 
