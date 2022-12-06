@@ -426,8 +426,8 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 
 #### 9.2.1 Exercise
 - try to find the files you have added above by searching for the associated metadata you added
-- search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files? -- add some more lewis carroll stories in public and metadata so they get more search hits
-- Think of how metadata is already being used in your research domain to find the data? e.g., any portaly where you used keyword search or some parameter search, etc.
+- search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files? Did you just discover new data based on metadata/keyword?
+- Think of how metadata is already being used in your research domain to find the data? e.g., any portal where you used keyword search or some parameter search, etc.
 
 > **_Food for brain:_**
 > You went through the process of adding metadata. Does the above exercise show you the value of doing so? Think of scenarios where in future you could easily find data with simple keyword search using metadata which would not have been possible without the metadata.
