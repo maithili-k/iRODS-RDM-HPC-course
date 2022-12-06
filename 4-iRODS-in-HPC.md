@@ -18,7 +18,7 @@ The full license text can be found in [LICENSE](LICENSE).
 
 Learning about the CLI tool icommands of iRODS and how to use it in High Performance Computing environments for data processing and keeping provenance on all your data. 
 Here we focus on how to use these tools in a data processing pipeline at a SLURM based compute cluster with a shared scratch space near the worker nodes and getting data from iRODS to this environment. 
-This is a followup section of [iRODS icommands hands-on](5-iRODS-icommands.md):
+This is a followup section of [iRODS icommands hands-on](2-iRODS-icommands.md):
 
 - searching for datasets of interest via `iquest`
 - downloading the dataset to scratch space accessible by worker nodes on Lisa
