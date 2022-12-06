@@ -1,4 +1,4 @@
-
+## Agenda
 
 | Time           | Module              | 
 | -------------- |:-------------|
@@ -11,10 +11,10 @@
 |  15:30 - 15:45 | 6. webdav and python API quick presentation slides|
 |  15:45 - 16:00 | Wrap up |
 
-Bonus and Advanced exercises
+### Bonus and Advanced exercises
 
-|           |           | 
-| -------------- |:-------------|
+|           |     
+| -------------- |
 |  7. webdav exercise module|
 |  8. Python API exercise module|
 
