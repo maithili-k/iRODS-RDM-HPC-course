@@ -426,7 +426,8 @@ iquest "%s/%s" "select COLL_NAME, DATA_NAME where META_DATA_ATTR_NAME like 'key1
 
 #### 9.2.1 Exercise
 - try to find the files you have added above by searching for the associated metadata you added
-- search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. Do you know these files? Did you just discover new data based on metadata/keyword?
+- search for files with `META_DATA_ATTR_NAME` is `author` and `META_DATA_ATTR_VALUE` is `Lewis Carroll`. If all the participants in this course have added the same metadata in the above exercises, why do you only see your files? If the metadata (not necessary the data itself) was readable for everyone, you would be able to discover a lot of (new) data only based on metadata search.
+- How would you enable another course participant to see your data? 
 - Think of how metadata is already being used in your research domain to find the data? e.g., any portal where you used keyword search or some parameter search, etc.
 
 > **_Food for brain:_**
