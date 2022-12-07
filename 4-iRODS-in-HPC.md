@@ -165,7 +165,7 @@ A simple jobscript looks like:
 #SBATCH -p short
 #SBATCH -N 1
 #SBATCH -t 4:00
-We will be uses the program GNU parallel to 'parrallelize' processes. You need to run it once and accept the terms of conditions.
+#We will be uses the program GNU parallel to 'parrallelize' processes. You need to run it once and accept the terms of conditions.
 #Make sure you have logged in to your iRODS zone prior to job submission. iRODS creates a irodsA file which is subsequently used by the worker nodes.
 
 #move to your home directory and current git repository which is also mounted on your scratch space and might hold the processing script
